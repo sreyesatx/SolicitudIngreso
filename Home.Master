@@ -1,0 +1,126 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Home.master.cs" Inherits="Home" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
+<!DOCTYPE html>
+<html lang="es">
+
+<head runat="server">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Atrex Chile A.G. | Sistema de solicitud de ingreso</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/scrolling-nav.css" rel="stylesheet">
+    <style>
+         .ocultar {
+             display: none;
+         }
+    </style>      
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body id="page-top">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="<%= ResolveUrl("~/CerrarSesion.aspx") %>">Inicio</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <asp:Label ID="lblMenu" runat="server"></asp:Label>
+        </div>
+    </nav>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    <!-- Top Contact Detail Section -->
+    <div>
+        <div class="container">
+
+            <div class="row" style="text-align: center">
+                <div class="col-md-12 mx-auto"">
+                    <div>
+                        <div class="footer-section-heading-title">
+                            <h3>Mantente en contacto con nosotros</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" style="text-align: center">
+                <div class="col-md-4 mx-auto">
+                    <div>
+                        <div class="media">
+                            <div class="media-body">
+                                <h6>&#9990; ¿Tienes alguna pregunta? Llámanos ahora</h6>
+                                <h6>+56 228225800</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mx-auto">
+                    <div>
+                        <div class="media">
+                            <div class="media-body">
+                                <h6>&#128344; Horarios Lunes - Viernes</h6>
+                                <h6>09.00 - 18.00</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mx-auto">
+                    <div>
+                        <div class="media">
+                            <div class="media-body">
+                                <h6>&#128386; Envíanos un correo electrónico</h6>
+                                <h6>contacto@atrexchile.cl</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <asp:SqlDataSource ID="sdsMenu" runat="server" ConnectionString='<%$ ConnectionStrings:SolicitudIngresoConnectionString %>' SelectCommand="sp_lista_menu_2_Cambio" SelectCommandType="StoredProcedure">
+        <SelectParameters>
+            <asp:Parameter Name="id_usuario" Type="Int32"></asp:Parameter>
+            <asp:Parameter Name="main_menu" Type="String"></asp:Parameter>
+        </SelectParameters>
+    </asp:SqlDataSource>
+
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">
+                Sitio optimizado para Google Chrome y Mozilla Firefox - &reg; Todos los derechos reservados - Atrex
+                    <asp:Label ID="lblAnio" runat="server"></asp:Label>
+            </p>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="<%= ResolveUrl("~/vendor/jquery/jquery.min.js") %>"></script>
+    <script src="<%= ResolveUrl("~/vendor/bootstrap/js/bootstrap.bundle.min.js") %>"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="<%= ResolveUrl("~/vendor/jquery-easing/jquery.easing.min.js") %>"></script>
+
+    <!-- Custom JavaScript for this theme -->
+    <script src="<%= ResolveUrl("~/js/scrolling-nav.js") %>"></script>
+
+</body>
+
+</html>
